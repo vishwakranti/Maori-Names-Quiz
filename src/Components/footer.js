@@ -15,8 +15,8 @@ const footer = ({props}) =>{
               }
               target='_blank'
             >
-              Google {props.A ? props.A : "No place"}{" "}
-              (debugging)
+              {/* Google {props.A ? props.A : "No place"}{" "}
+              (debugging) */}
             </a>
           </div>
         </div>

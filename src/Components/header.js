@@ -1,6 +1,6 @@
 import React from "react";
 
-const header = () => {
+const Header = () => {
     return (
     <div className='container-fluid  justify-content-md-center App-header '>
       <h1 className='title' align='center'>
@@ -10,4 +10,4 @@ const header = () => {
   );
 }
 
-export default header;
+export default Header;
