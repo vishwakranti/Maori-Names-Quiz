@@ -1,6 +1,6 @@
 import React from "react";
 
-const Header = ({props}) => {
+const Results = ({props}) => {
     return (
     <div className='container-fluid  justify-content-md-center App-header '>
       <h1 className='title' align='center'>
@@ -10,4 +10,4 @@ const Header = ({props}) => {
   );
 }
 
-export default Header;
+export default Results;

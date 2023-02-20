@@ -59,10 +59,10 @@
   background-color: #2e50e5;
   box-shadow: 0px 15px 20px rgba(18, 39, 97, 0.4);
   color: #fff;
-  transform: translateY(7px);
+  transform: translateY(20px);
 }
 
-.select-container {
+/* .select-container {
   text-align: left;
   border: 1px solid #ccc;
   position: relative;
@@ -76,3 +76,21 @@
   justify-content: space-between;
   user-select: none;
 }
+
+.select-menu {
+  position: absolute;
+  transform:  translateX(4px);
+  width : 100%;
+  border: 1.5px solid #ccc;
+  border-radius: 5px;
+
+}
+
+.select-item {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.select-item:hover {
+  background-color: #9fc3f870;
+} */

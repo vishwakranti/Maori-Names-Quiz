@@ -3,7 +3,7 @@ const footer = ({props}) =>{
       <div className='row'>
         <div className='col-sm'>
           <div className='appheadercitytext'>
-            <b> Hint: {props.Components ? props.Components : ""}</b>
+            <b> Hint: {props.Hint ? props.Hint : ""}</b>
           </div>
         </div>
         <div className='col-sm '>
@@ -13,10 +13,9 @@ const footer = ({props}) =>{
                 "https://www.google.com/search?q=" +
                 props.A
               }
-              target='_blank'
+              target='_blank' rel="noreferrer"
             >
-              {/* Google {props.A ? props.A : "No place"}{" "}
-              (debugging) */}
+              Google -  {props.A ? props.A : "No place"}{" "}
             </a>
           </div>
         </div>
