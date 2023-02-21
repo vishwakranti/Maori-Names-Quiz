@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import QuestionLabel from './questionLabel';
 import Footer from './footer';
-//import Select from 'react-select';
+import Results from './results';
 import Select from './select';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { quizData } from '../Assets/places';
 import Swal from "sweetalert";
 
 const Quiz = () => {
-  //const quizData = QuizData;
   const [quizDataSet, setQuizDataSet] = useState({
     Hint: "",
     Place_name: "",
@@ -16,8 +15,8 @@ const Quiz = () => {
   });
 
   const [selectValue, setSelectValue] = useState();
-  const [answerRight, setAnswerRight] = useState();
-  const [answerWrong, setAnswerWrong] = useState();
+  const [correctGuess, setCorrectGuess] = useState([]);
+  const [incorrectGuess, setIncorrectGuess] = useState([]);
   const [questionLabel, setQuestionLabel] = useState();
   let UserGuess;
 
@@ -30,17 +29,24 @@ const Quiz = () => {
   }
   const handleSelectValueChange = (event) => {
     console.log('select value changed to: ', event.target.value);
-    //setSelectValue(event.target.value);
     UserGuess = event.target.value;
 
-    let result = IsUserGuessCorrect({ guess: UserGuess, data: quizDataSet.Meaning });
+    let result = IsUserGuessCorrect({ guess: event.target.value, data: quizDataSet.Meaning });
     //console.log('User guess is ', result);
     if(result)
     { 
       QuizAlert({text: "Right Answer!", icon: "success", btnText: "Play again!"});
+      setCorrectGuess((correctGuess) => [
+        ...correctGuess,
+        '"' + quizDataSet.Place_name + '" means "' + event.target.value + '"'
+      ]);
     }
     else{
       QuizAlert({text: "Wrong Answer. Try again!", icon: "error", btnText:"Try again!"});
+      setIncorrectGuess((incorrectGuess) => [
+        ...incorrectGuess,
+        '"' + quizDataSet.Place_name + '" does not mean "' + event.target.value + '"'
+      ]);
     }
   };
 
@@ -78,8 +84,8 @@ const Quiz = () => {
       </div>
       <div className="row">
         <div className="col-sm-6">
-          <button className="buttonSubmit btn btn-default" onClick={handleGameStart}>
-            Choose a place
+          <button className="btn btn-default btnSubmit" onClick={handleGameStart}>
+            Click here to choose a random place
           </button>
         </div>
         <div className="col-sm-6 pt-5">
@@ -87,11 +93,7 @@ const Quiz = () => {
             onChange={handleSelectValueChange} />
         </div>
       </div>
-      <div className="row mt-2">
-        <div className="col-sm-6">Right Answer</div>
-        <div className="col-sm-6">Wrong Answer</div>
-
-      </div>
+      <Results correctGuess={correctGuess} incorrectGuess={incorrectGuess}/>
       <Footer props={quizDataSet} />
     </div>
 
