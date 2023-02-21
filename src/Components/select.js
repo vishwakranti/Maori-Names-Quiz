@@ -4,8 +4,8 @@ const Select = ({placeHolder, value, options, onChange}) => {
 
     if (Array.isArray(options) && options.length > 0) {
         return (
-            <div>
-                <select onChange={onChange}>
+            <div className="">
+                <select onChange={onChange} className="form-select form-select-md mr-3">
                     {options.map((item) => (
                         <option value={item.value} className="select-item"> {item.label}</option>
                     ))}
@@ -14,9 +14,9 @@ const Select = ({placeHolder, value, options, onChange}) => {
         );
     }
     else {
-        return (<div>
-            <select>
-                <option className="select-item">{placeHolder}</option>
+        return (<div className="">
+            <select className="form-select form-select-md mr-3">
+                <option className="select-item" >{placeHolder}</option>
             </select>
         </div>);
     }

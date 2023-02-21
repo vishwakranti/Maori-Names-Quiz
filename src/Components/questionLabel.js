@@ -1,13 +1,16 @@
 import React from "react";
 
-const Question = ({props}) => {
-    return (
-    <div className='container-fluid  justify-content-md-center '>
-      <h1 className='title' align='center'>
-        { props ? "What is the meaning of " + props + '?' : ''}
-      </h1>
+const QuestionLabel = ({ props }) => {
+  return (
+    <div className='justify-content-md-center' style={{ height: '50px' }}>
+      <h3 className={props ? "d-block pt-20" : "d-none"}>
+        What is the meaning of <span className="mark">
+          {props ? props.Place_name + '?' : ''}</span>
+      </h3>
+      <blockquote className={props ? "d-block text-muted pt-3" : "d-none text-muted pt-3"}>
+        {props ? 'Hint:' + props.Hint + '?' : ''} </blockquote>
     </div>
   );
 }
 
-export default Question;
+export default QuestionLabel;
